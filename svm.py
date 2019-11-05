@@ -11,6 +11,7 @@ def train(trainFile):
     train = pd.read_csv(trainFile)
     tfidf = TfidfVectorizer()
     train.dropna(inplace=True)
+    train = train.sample(frac=1)
     X_train = tfidf.fit_transform(train['comment_text'])
     clf = LinearSVC(random_state=0, tol=1e-5)
     clf.fit(X_train, train['class'])    
