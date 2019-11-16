@@ -9,7 +9,7 @@ np.random.seed(500)
 
 def train(trainFile):
     train = pd.read_csv(trainFile)
-    tfidf = TfidfVectorizer()
+    tfidf = TfidfVectorizer(max_features=50000)
     train.dropna(inplace=True)
     train = train.sample(frac=1)
     X_train = tfidf.fit_transform(train['comment_text'])
