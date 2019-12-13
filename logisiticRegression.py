@@ -7,11 +7,6 @@ from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 import sklearn.metrics as metrics
 
 def extract_features(field,training_data,testing_data):
-    # get the features - word level tf-idf
-    #TF-IDF score represents the relative importance  of a term in the document and the entire corpus.
-    # TF-IDF score is composed by two terms: the first computes the normalized Term Frequency (TF),
-    # the second term is the Inverse Document Frequency (IDF), computed as the logarithm of the number of the documents
-    # in the corpus divided by the number of documents where the specific term appears.
     print("Getting the features..")
     tfidf_vectorizer = TfidfVectorizer(use_idf=True, max_df=0.95)
     tfidf_vectorizer.fit_transform(training_data[field].values)
